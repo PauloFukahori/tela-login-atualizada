@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ==========================================
-  // UTILIDADES
-  // ==========================================
-
   function showToast(message, type = 'info') {
     const existing = document.querySelector('.toast-notification');
     if (existing) existing.remove();
@@ -66,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // LOCALSTORAGE — SISTEMA DE USUÁRIOS
+  //    GERENCIAMENTO DE USUÁRIOS E SESSÕES  
   // ==========================================
 
   const STORAGE_KEY = 'premium_auth_users';
@@ -146,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // FORÇA DA SENHA
+  //         VERIFICADOR DE FORÇA DE SENHA    
   // ==========================================
 
   function checkStrength(password) {
@@ -193,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // TOGGLE SENHA
+  //         TOGGLE DE VISIBILIDADE DE SENHA  
   // ==========================================
 
   function setupToggle(inputId, btnId) {
@@ -210,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // PÁGINA: LOGIN (index.html)
+  //        PÁGINA: LOGIN (index.html)  
   // ==========================================
 
   const loginForm = document.getElementById('loginForm');
@@ -340,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // PÁGINA: CADASTRO (cadastro.html)
+  //        PÁGINA: CADASTRO (cadastro.html)  
   // ==========================================
 
   const cadastroForm = document.getElementById('cadastroForm');
@@ -482,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // PÁGINA: RECUPERAR SENHA (recuperar.html)
+  //   PÁGINA: RECUPERAR SENHA (recuperar.html) 
   // ==========================================
 
   const recuperarForm = document.getElementById('recuperarForm');
@@ -709,7 +705,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // PÁGINA: DASHBOARD (dashboard.html)
+  //     PÁGINA: DASHBOARD (dashboard.html) 
   // ==========================================
 
   const dashboardPage = document.querySelector('.main-content');
@@ -835,9 +831,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ==========================================
-  // MENSAGENS DE QUERY PARAM
-  // ==========================================
+  // =============================================================================
+  //   MENSAGENS DE TOAST PARA AÇÕES DE USUÁRIO (CADASTRO, RECUPERAÇÃO, LOGOUT) 
+  // =============================================================================
 
   const params = new URLSearchParams(window.location.search);
   if (params.get('registered') === 'true') {
