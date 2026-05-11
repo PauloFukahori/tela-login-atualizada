@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recuperar a senha</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<base target="_blank">
+</head>
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <div class="container">
+    <div class="login-box">
+      <div class="logo">
+        <img src="img/login.png" alt="Logo" />
+      </div>
+      <h2>Recuperar sua senha</h2>
+      <p class="subtitle">Informe seu e-mail para redefinir sua senha</p>
+
+      <form id="recuperarForm" novalidate>
+        <div class="input-group">
+          <label for="emailRec">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            E-mail cadastrado
+          </label>
+          <input type="email" id="emailRec" placeholder="exemple@email.com" autocomplete="email" />
+          <span class="error-msg" id="error-emailRec"></span>
+        </div>
+
+        <button type="submit" class="btn-primary" id="btnRecuperar">
+          <span class="btn-text">Enviar link para recuperação</span>
+          <span class="btn-loader"></span>
+        </button>
+      </form>
+
+      <form id="codigoForm" class="hidden" novalidate>
+        <div class="step-indicator">
+          <div class="step active">1</div>
+          <div class="step-line"></div>
+          <div class="step active">2</div>
+          <div class="step-line"></div>
+          <div class="step">3</div>
+        </div>
+
+        <p class="step-desc">Digite o código de 6 dígitos enviado para seu e-mail</p>
+
+        <div class="code-inputs">
+          <input type="text" class="code-digit" maxlength="1" inputmode="numeric" autocomplete="off" />
+          <input type="text" class="code-digit" maxlength="1" inputmode="numeric" autocomplete="off" />
+          <input type="text" class="code-digit" maxlength="1" inputmode="numeric" autocomplete="off" />
+          <input type="text" class="code-digit" maxlength="1" inputmode="numeric" autocomplete="off" />
+          <input type="text" class="code-digit" maxlength="1" inputmode="numeric" autocomplete="off" />
+          <input type="text" class="code-digit" maxlength="1" inputmode="numeric" autocomplete="off" />
+        </div>
+        <span class="error-msg" id="error-codigo"></span>
+
+        <div class="resend-code">
+          <span id="timerText">Reenviar em 60s</span>
+          <button type="button" class="link-btn hidden" id="btnReenviar">Reenviar código</button>
+        </div>
+
+        <button type="submit" class="btn-primary" id="btnVerificar">
+          <span class="btn-text">Verificar código</span>
+          <span class="btn-loader"></span>
+        </button>
+      </form>
+
+      <form id="novaSenhaForm" class="hidden" novalidate>
+        <div class="step-indicator">
+          <div class="step done">✓</div>
+          <div class="step-line done"></div>
+          <div class="step done">✓</div>
+          <div class="step-line done"></div>
+          <div class="step active">3</div>
+        </div>
+
+        <p class="step-desc">Crie uma nova senha para sua conta</p>
+
+        <div class="input-group">
+          <label for="novaSenha">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            Nova senha
+          </label>
+          <div class="password-wrap">
+            <input type="password" id="novaSenha" placeholder="Crie uma senha forte" autocomplete="new-password" />
+            <button type="button" class="toggle-password" id="toggleNovaSenha" aria-label="Mostrar senha">
+              <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg class="eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+          <span class="error-msg" id="error-novaSenha"></span>
+          <div class="strength-bar" id="strengthBarRec">
+            <div class="strength-fill" id="strengthFillRec"></div>
+          </div>
+          <p class="strength-text" id="strengthTextRec"></p>
+        </div>
+
+        <div class="input-group">
+          <label for="confirmarNovaSenha">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            Confirmar nova senha
+          </label>
+          <div class="password-wrap">
+            <input type="password" id="confirmarNovaSenha" placeholder="Repita a nova senha" autocomplete="new-password" />
+            <button type="button" class="toggle-password" id="toggleConfirmarNova" aria-label="Mostrar senha">
+              <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg class="eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+          <span class="error-msg" id="error-confirmarNovaSenha"></span>
+        </div>
+
+        <button type="submit" class="btn-primary" id="btnSalvarSenha">
+          <span class="btn-text">Redefinir senha</span>
+          <span class="btn-loader"></span>
+        </button>
+      </form>
+
+      <div class="footer">
+        <p>Lembrou a senha? <a href="index.html">Voltar ao login</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
